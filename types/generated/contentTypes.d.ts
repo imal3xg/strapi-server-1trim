@@ -682,7 +682,7 @@ export interface ApiGrupoGrupo extends Schema.CollectionType {
   info: {
     singularName: 'grupo';
     pluralName: 'grupos';
-    displayName: 'Grupo';
+    displayName: 'Grupos';
     description: '';
   };
   options: {
