@@ -4,7 +4,8 @@
   "info": {
     "singularName": "usuario",
     "pluralName": "usuarios",
-    "displayName": "Usuarios"
+    "displayName": "Usuarios",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -19,6 +20,37 @@
     },
     "genero": {
       "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "grupo": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::grupo.grupo",
+      "inversedBy": "usuarios"
+    },
+    "birthdate": {
+      "type": "date"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "usuario"
+    },
+    "username": {
+      "type": "string"
+    },
+    "password": {
+      "type": "password",
+      "minLength": 6
+    },
+    "blocked": {
+      "type": "boolean"
+    },
+    "approved": {
+      "type": "boolean"
     }
   }
 }
