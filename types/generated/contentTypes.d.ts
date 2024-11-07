@@ -362,35 +362,35 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiGrupoGrupo extends Schema.CollectionType {
-  collectionName: 'grupos';
+export interface ApiGroupGroup extends Schema.CollectionType {
+  collectionName: 'groups';
   info: {
-    singularName: 'grupo';
-    pluralName: 'grupos';
-    displayName: 'Grupos';
+    singularName: 'group';
+    pluralName: 'groups';
+    displayName: 'Group';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    nombre: Attribute.String;
-    usuarios: Attribute.Relation<
-      'api::grupo.grupo',
+    name: Attribute.String;
+    people: Attribute.Relation<
+      'api::group.group',
       'oneToMany',
-      'api::usuario.usuario'
+      'api::person.person'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::grupo.grupo',
+      'api::group.group',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::grupo.grupo',
+      'api::group.group',
       'oneToOne',
       'admin::user'
     > &
@@ -398,51 +398,42 @@ export interface ApiGrupoGrupo extends Schema.CollectionType {
   };
 }
 
-export interface ApiUsuarioUsuario extends Schema.CollectionType {
-  collectionName: 'usuarios';
+export interface ApiPersonPerson extends Schema.CollectionType {
+  collectionName: 'people';
   info: {
-    singularName: 'usuario';
-    pluralName: 'usuarios';
-    displayName: 'Usuarios';
-    description: '';
+    singularName: 'person';
+    pluralName: 'people';
+    displayName: 'Person';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    nombre: Attribute.String;
-    apellidos: Attribute.String;
-    genero: Attribute.String;
-    email: Attribute.Email;
-    grupo: Attribute.Relation<
-      'api::usuario.usuario',
-      'manyToOne',
-      'api::grupo.grupo'
-    >;
+    name: Attribute.String;
+    surname: Attribute.String;
+    gender: Attribute.Enumeration<['male', 'female', 'other']>;
     birthdate: Attribute.Date;
+    group: Attribute.Relation<
+      'api::person.person',
+      'manyToOne',
+      'api::group.group'
+    >;
     user: Attribute.Relation<
-      'api::usuario.usuario',
+      'api::person.person',
       'oneToOne',
       'plugin::users-permissions.user'
     >;
-    username: Attribute.String;
-    password: Attribute.Password &
-      Attribute.SetMinMaxLength<{
-        minLength: 6;
-      }>;
-    blocked: Attribute.Boolean;
-    approved: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::usuario.usuario',
+      'api::person.person',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::usuario.usuario',
+      'api::person.person',
       'oneToOne',
       'admin::user'
     > &
@@ -748,10 +739,10 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    usuario: Attribute.Relation<
+    person: Attribute.Relation<
       'plugin::users-permissions.user',
       'oneToOne',
-      'api::usuario.usuario'
+      'api::person.person'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -780,8 +771,8 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::grupo.grupo': ApiGrupoGrupo;
-      'api::usuario.usuario': ApiUsuarioUsuario;
+      'api::group.group': ApiGroupGroup;
+      'api::person.person': ApiPersonPerson;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;

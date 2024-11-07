@@ -66,10 +66,10 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "usuario": {
+    "person": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::usuario.usuario",
+      "target": "api::person.person",
       "mappedBy": "user"
     }
   }

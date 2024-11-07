@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "grupos",
+  "collectionName": "groups",
   "info": {
-    "singularName": "grupo",
-    "pluralName": "grupos",
-    "displayName": "Grupos",
+    "singularName": "group",
+    "pluralName": "groups",
+    "displayName": "Group",
     "description": ""
   },
   "options": {
@@ -12,14 +12,14 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "nombre": {
+    "name": {
       "type": "string"
     },
-    "usuarios": {
+    "people": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::usuario.usuario",
-      "mappedBy": "grupo"
+      "target": "api::person.person",
+      "mappedBy": "group"
     }
   }
 }
