@@ -404,6 +404,7 @@ export interface ApiPersonPerson extends Schema.CollectionType {
     singularName: 'person';
     pluralName: 'people';
     displayName: 'Person';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -423,6 +424,7 @@ export interface ApiPersonPerson extends Schema.CollectionType {
       'oneToOne',
       'plugin::users-permissions.user'
     >;
+    email: Attribute.Email;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
