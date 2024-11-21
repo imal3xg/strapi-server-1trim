@@ -398,6 +398,39 @@ export interface ApiGroupGroup extends Schema.CollectionType {
   };
 }
 
+export interface ApiPartyParty extends Schema.CollectionType {
+  collectionName: 'parties';
+  info: {
+    singularName: 'party';
+    pluralName: 'parties';
+    displayName: 'Party';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    minAge: Attribute.Integer;
+    country: Attribute.String;
+    dayDate: Attribute.Date;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::party.party',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::party.party',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPersonPerson extends Schema.CollectionType {
   collectionName: 'people';
   info: {
@@ -774,6 +807,7 @@ declare module '@strapi/types' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'api::group.group': ApiGroupGroup;
+      'api::party.party': ApiPartyParty;
       'api::person.person': ApiPersonPerson;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
