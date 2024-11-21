@@ -380,6 +380,7 @@ export interface ApiGroupGroup extends Schema.CollectionType {
       'oneToMany',
       'api::person.person'
     >;
+    country: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

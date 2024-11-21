@@ -20,6 +20,9 @@
       "relation": "oneToMany",
       "target": "api::person.person",
       "mappedBy": "group"
+    },
+    "country": {
+      "type": "string"
     }
   }
 }
