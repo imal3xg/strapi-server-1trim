@@ -405,6 +405,7 @@ export interface ApiPartyParty extends Schema.CollectionType {
     singularName: 'party';
     pluralName: 'parties';
     displayName: 'Party';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -414,6 +415,9 @@ export interface ApiPartyParty extends Schema.CollectionType {
     minAge: Attribute.Integer;
     country: Attribute.String;
     dayDate: Attribute.Date;
+    city: Attribute.String;
+    price: Attribute.Decimal;
+    description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

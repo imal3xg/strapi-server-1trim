@@ -4,7 +4,8 @@
   "info": {
     "singularName": "party",
     "pluralName": "parties",
-    "displayName": "Party"
+    "displayName": "Party",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -22,6 +23,15 @@
     },
     "dayDate": {
       "type": "date"
+    },
+    "city": {
+      "type": "string"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "description": {
+      "type": "text"
     }
   }
 }
