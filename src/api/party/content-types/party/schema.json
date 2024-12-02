@@ -32,6 +32,12 @@
     },
     "description": {
       "type": "text"
+    },
+    "person": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::person.person",
+      "inversedBy": "parties"
     }
   }
 }

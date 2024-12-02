@@ -43,6 +43,12 @@
     },
     "email": {
       "type": "email"
+    },
+    "parties": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::party.party",
+      "mappedBy": "person"
     }
   }
 }

@@ -418,6 +418,11 @@ export interface ApiPartyParty extends Schema.CollectionType {
     city: Attribute.String;
     price: Attribute.Decimal;
     description: Attribute.Text;
+    person: Attribute.Relation<
+      'api::party.party',
+      'manyToOne',
+      'api::person.person'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -463,6 +468,11 @@ export interface ApiPersonPerson extends Schema.CollectionType {
       'plugin::users-permissions.user'
     >;
     email: Attribute.Email;
+    parties: Attribute.Relation<
+      'api::person.person',
+      'oneToMany',
+      'api::party.party'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -594,6 +604,46 @@ export interface PluginUploadFolder extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'plugin::upload.folder',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginGoogleMapsConfig extends Schema.SingleType {
+  collectionName: 'google_maps_configs';
+  info: {
+    singularName: 'config';
+    pluralName: 'configs';
+    displayName: 'Google Maps Config';
+  };
+  options: {
+    populateCreatorFields: false;
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    googleMapsKey: Attribute.String &
+      Attribute.Required &
+      Attribute.DefaultTo<''>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::google-maps.config',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::google-maps.config',
       'oneToOne',
       'admin::user'
     > &
@@ -816,6 +866,7 @@ declare module '@strapi/types' {
       'api::person.person': ApiPersonPerson;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
+      'plugin::google-maps.config': PluginGoogleMapsConfig;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
