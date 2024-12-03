@@ -418,7 +418,7 @@ export interface ApiPartyParty extends Schema.CollectionType {
     city: Attribute.String;
     price: Attribute.Decimal;
     description: Attribute.Text;
-    person: Attribute.Relation<
+    personId: Attribute.Relation<
       'api::party.party',
       'manyToOne',
       'api::person.person'

@@ -33,7 +33,7 @@
     "description": {
       "type": "text"
     },
-    "person": {
+    "personId": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::person.person",

@@ -48,7 +48,7 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::party.party",
-      "mappedBy": "person"
+      "mappedBy": "personId"
     }
   }
 }
