@@ -38,6 +38,15 @@
       "relation": "manyToOne",
       "target": "api::person.person",
       "inversedBy": "parties"
+    },
+    "likesCount": {
+      "type": "biginteger"
+    },
+    "likes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::like.like",
+      "mappedBy": "party"
     }
   }
 }

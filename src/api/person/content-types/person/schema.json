@@ -49,6 +49,24 @@
       "relation": "oneToMany",
       "target": "api::party.party",
       "mappedBy": "personId"
+    },
+    "followed": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::person.person",
+      "inversedBy": "followers"
+    },
+    "followers": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::person.person",
+      "inversedBy": "followed"
+    },
+    "likes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::like.like",
+      "mappedBy": "person"
     }
   }
 }

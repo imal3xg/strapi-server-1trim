@@ -362,135 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiGroupGroup extends Schema.CollectionType {
-  collectionName: 'groups';
-  info: {
-    singularName: 'group';
-    pluralName: 'groups';
-    displayName: 'Group';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String;
-    people: Attribute.Relation<
-      'api::group.group',
-      'oneToMany',
-      'api::person.person'
-    >;
-    country: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::group.group',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::group.group',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiPartyParty extends Schema.CollectionType {
-  collectionName: 'parties';
-  info: {
-    singularName: 'party';
-    pluralName: 'parties';
-    displayName: 'Party';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String;
-    minAge: Attribute.Integer;
-    country: Attribute.String;
-    dayDate: Attribute.Date;
-    city: Attribute.String;
-    price: Attribute.Decimal;
-    description: Attribute.Text;
-    personId: Attribute.Relation<
-      'api::party.party',
-      'manyToOne',
-      'api::person.person'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::party.party',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::party.party',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiPersonPerson extends Schema.CollectionType {
-  collectionName: 'people';
-  info: {
-    singularName: 'person';
-    pluralName: 'people';
-    displayName: 'Person';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String;
-    surname: Attribute.String;
-    gender: Attribute.Enumeration<['male', 'female', 'other']>;
-    birthdate: Attribute.Date;
-    group: Attribute.Relation<
-      'api::person.person',
-      'manyToOne',
-      'api::group.group'
-    >;
-    user: Attribute.Relation<
-      'api::person.person',
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
-    email: Attribute.Email;
-    parties: Attribute.Relation<
-      'api::person.person',
-      'oneToMany',
-      'api::party.party'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::person.person',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::person.person',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -604,46 +475,6 @@ export interface PluginUploadFolder extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'plugin::upload.folder',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface PluginGoogleMapsConfig extends Schema.SingleType {
-  collectionName: 'google_maps_configs';
-  info: {
-    singularName: 'config';
-    pluralName: 'configs';
-    displayName: 'Google Maps Config';
-  };
-  options: {
-    populateCreatorFields: false;
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
-  };
-  attributes: {
-    googleMapsKey: Attribute.String &
-      Attribute.Required &
-      Attribute.DefaultTo<''>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'plugin::google-maps.config',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'plugin::google-maps.config',
       'oneToOne',
       'admin::user'
     > &
@@ -851,6 +682,187 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiGroupGroup extends Schema.CollectionType {
+  collectionName: 'groups';
+  info: {
+    singularName: 'group';
+    pluralName: 'groups';
+    displayName: 'Group';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    people: Attribute.Relation<
+      'api::group.group',
+      'oneToMany',
+      'api::person.person'
+    >;
+    country: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::group.group',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::group.group',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLikeLike extends Schema.CollectionType {
+  collectionName: 'likes';
+  info: {
+    singularName: 'like';
+    pluralName: 'likes';
+    displayName: 'Likes';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    party: Attribute.Relation<
+      'api::like.like',
+      'manyToOne',
+      'api::party.party'
+    >;
+    person: Attribute.Relation<
+      'api::like.like',
+      'manyToOne',
+      'api::person.person'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::like.like', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::like.like', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPartyParty extends Schema.CollectionType {
+  collectionName: 'parties';
+  info: {
+    singularName: 'party';
+    pluralName: 'parties';
+    displayName: 'Party';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    minAge: Attribute.Integer;
+    country: Attribute.String;
+    dayDate: Attribute.Date;
+    city: Attribute.String;
+    price: Attribute.Decimal;
+    description: Attribute.Text;
+    personId: Attribute.Relation<
+      'api::party.party',
+      'manyToOne',
+      'api::person.person'
+    >;
+    likesCount: Attribute.BigInteger;
+    likes: Attribute.Relation<
+      'api::party.party',
+      'oneToMany',
+      'api::like.like'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::party.party',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::party.party',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPersonPerson extends Schema.CollectionType {
+  collectionName: 'people';
+  info: {
+    singularName: 'person';
+    pluralName: 'people';
+    displayName: 'Person';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    surname: Attribute.String;
+    gender: Attribute.Enumeration<['male', 'female', 'other']>;
+    birthdate: Attribute.Date;
+    group: Attribute.Relation<
+      'api::person.person',
+      'manyToOne',
+      'api::group.group'
+    >;
+    user: Attribute.Relation<
+      'api::person.person',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    email: Attribute.Email;
+    parties: Attribute.Relation<
+      'api::person.person',
+      'oneToMany',
+      'api::party.party'
+    >;
+    followed: Attribute.Relation<
+      'api::person.person',
+      'manyToMany',
+      'api::person.person'
+    >;
+    followers: Attribute.Relation<
+      'api::person.person',
+      'manyToMany',
+      'api::person.person'
+    >;
+    likes: Attribute.Relation<
+      'api::person.person',
+      'oneToMany',
+      'api::like.like'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::person.person',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::person.person',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -861,16 +873,16 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::group.group': ApiGroupGroup;
-      'api::party.party': ApiPartyParty;
-      'api::person.person': ApiPersonPerson;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
-      'plugin::google-maps.config': PluginGoogleMapsConfig;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::group.group': ApiGroupGroup;
+      'api::like.like': ApiLikeLike;
+      'api::party.party': ApiPartyParty;
+      'api::person.person': ApiPersonPerson;
     }
   }
 }
