@@ -724,7 +724,8 @@ export interface ApiLikeLike extends Schema.CollectionType {
   info: {
     singularName: 'like';
     pluralName: 'likes';
-    displayName: 'Likes';
+    displayName: 'Like';
+    description: '';
   };
   options: {
     draftAndPublish: true;

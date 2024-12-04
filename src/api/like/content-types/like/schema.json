@@ -4,7 +4,8 @@
   "info": {
     "singularName": "like",
     "pluralName": "likes",
-    "displayName": "Likes"
+    "displayName": "Like",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
