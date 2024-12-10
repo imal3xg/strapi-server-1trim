@@ -54,13 +54,13 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::person.person",
-      "inversedBy": "followers"
+      "mappedBy": "followers"
     },
     "followers": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::person.person",
-      "inversedBy": "followed"
+      "mappedBy": "followed"
     },
     "likes": {
       "type": "relation",
