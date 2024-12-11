@@ -67,6 +67,16 @@
       "relation": "oneToMany",
       "target": "api::like.like",
       "mappedBy": "person"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

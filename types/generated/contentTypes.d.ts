@@ -526,6 +526,7 @@ export interface ApiPersonPerson extends Schema.CollectionType {
       'oneToMany',
       'api::like.like'
     >;
+    image: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
