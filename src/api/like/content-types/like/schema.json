@@ -17,12 +17,6 @@
       "relation": "manyToOne",
       "target": "api::party.party",
       "inversedBy": "likes"
-    },
-    "person": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::person.person",
-      "inversedBy": "likes"
     }
   }
 }

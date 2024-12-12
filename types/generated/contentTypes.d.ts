@@ -416,11 +416,6 @@ export interface ApiLikeLike extends Schema.CollectionType {
       'manyToOne',
       'api::party.party'
     >;
-    person: Attribute.Relation<
-      'api::like.like',
-      'manyToOne',
-      'api::person.person'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -510,21 +505,6 @@ export interface ApiPersonPerson extends Schema.CollectionType {
       'api::person.person',
       'oneToMany',
       'api::party.party'
-    >;
-    followed: Attribute.Relation<
-      'api::person.person',
-      'manyToMany',
-      'api::person.person'
-    >;
-    followers: Attribute.Relation<
-      'api::person.person',
-      'manyToMany',
-      'api::person.person'
-    >;
-    likes: Attribute.Relation<
-      'api::person.person',
-      'oneToMany',
-      'api::like.like'
     >;
     image: Attribute.Media;
     createdAt: Attribute.DateTime;
